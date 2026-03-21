@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Médico - Login</title>
+    <title>Sistema Médico - Gestión Clínica</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
 </head>
 <body>
     <div id="app">
@@ -25,7 +26,7 @@
                     <form id="loginForm" class="login-form">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="doctor@hospital.com" required>
+                            <input type="email" id="email" placeholder="admin@clinica.com" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Contraseña</label>
@@ -107,12 +108,13 @@
 
     <!-- External Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
-    <!-- Application Scripts -->
-    <script src="data.js"></script>
+    <!-- Application Scripts (Order matters) -->
+    <script src="supabase.js"></script>
+    <script src="app.js"></script>
     <script src="patients.js"></script>
     <script src="appointments.js"></script>
     <script src="billing.js"></script>
-    <script src="app.js"></script>
 </body>
 </html>

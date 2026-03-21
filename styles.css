@@ -809,3 +809,22 @@ tbody tr:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==================== DANGER BUTTON ==================== */
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}

@@ -1,8 +1,14 @@
 // ==================== APPOINTMENTS MODULE ====================
 
 let selectedDate = new Date().toISOString().split('T')[0];
+let appointmentsList = [];
+let patientsListForAppointments = [];
+let doctorsList = [];
 
 function loadAppointmentsModule() {
+    console.log('=== CARGANDO MÓDULO DE CITAS ===');
+    console.log('Fecha seleccionada:', selectedDate);
+    
     const html = `
         <div class="space-y-6">
             <!-- Header -->
@@ -107,7 +113,10 @@ function loadAppointmentsModule() {
                     </div>
                     <div class="card-content">
                         <div id="appointmentsList" class="space-y-4">
-                            <!-- Appointments will be rendered here -->
+                            <div class="text-center" style="padding: 3rem;">
+                                <div class="loading-spinner"></div>
+                                <p style="margin-top: 1rem; color: var(--gray-600);">Cargando citas...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -124,38 +133,40 @@ function loadAppointmentsModule() {
                 <div class="modal-body">
                     <form id="newAppointmentForm" class="space-y-4">
                         <div class="form-group">
-                            <label>Paciente</label>
-                            <select required>
+                            <label>Paciente *</label>
+                            <select id="appointmentPatientId" required>
                                 <option value="">Selecciona un paciente</option>
-                                ${patientsData.map(p => `<option value="${p.id}">${p.name}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Médico *</label>
+                            <select id="appointmentDoctorId" required>
+                                <option value="">Asignar médico</option>
                             </select>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="form-group">
-                                <label>Fecha</label>
-                                <input type="date" required>
+                                <label>Fecha *</label>
+                                <input type="date" id="appointmentDate" required>
                             </div>
                             <div class="form-group">
-                                <label>Hora</label>
-                                <input type="time" required>
+                                <label>Hora *</label>
+                                <input type="time" id="appointmentTime" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Tipo de Consulta</label>
-                            <select required>
-                                <option value="">Selecciona tipo de consulta</option>
-                                <option value="general">Consulta General</option>
-                                <option value="revision">Revisión</option>
-                                <option value="primera">Primera Consulta</option>
-                                <option value="urgencia">Urgencia</option>
+                            <select id="appointmentType">
+                                <option value="Consulta General">Consulta General</option>
+                                <option value="Revisión">Revisión</option>
+                                <option value="Primera Consulta">Primera Consulta</option>
+                                <option value="Emergencia">Emergencia</option>
+                                <option value="Control">Control</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Médico</label>
-                            <select required>
-                                <option value="">Asignar médico</option>
-                                ${doctorsData.map(d => `<option value="${d.id}">${d.name}</option>`).join('')}
-                            </select>
+                            <label>Notas (opcional)</label>
+                            <textarea id="appointmentNotes" placeholder="Notas adicionales sobre la cita" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
@@ -165,42 +176,209 @@ function loadAppointmentsModule() {
                 </div>
             </div>
         </div>
+
+        <!-- Edit Appointment Modal -->
+        <div id="editAppointmentModal" class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Editar Cita</h3>
+                    <p class="modal-description">Modifica la información de la cita</p>
+                </div>
+                <div class="modal-body">
+                    <form id="editAppointmentForm" class="space-y-4">
+                        <input type="hidden" id="editAppointmentId">
+                        <div class="form-group">
+                            <label>Paciente *</label>
+                            <select id="editAppointmentPatientId" required>
+                                <option value="">Selecciona un paciente</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Médico *</label>
+                            <select id="editAppointmentDoctorId" required>
+                                <option value="">Asignar médico</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <div class="form-group">
+                                <label>Fecha *</label>
+                                <input type="date" id="editAppointmentDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Hora *</label>
+                                <input type="time" id="editAppointmentTime" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo de Consulta</label>
+                            <select id="editAppointmentType">
+                                <option value="Consulta General">Consulta General</option>
+                                <option value="Revisión">Revisión</option>
+                                <option value="Primera Consulta">Primera Consulta</option>
+                                <option value="Emergencia">Emergencia</option>
+                                <option value="Control">Control</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <select id="editAppointmentStatus">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="confirmada">Confirmada</option>
+                                <option value="completada">Completada</option>
+                                <option value="cancelada">Cancelada</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Notas</label>
+                            <textarea id="editAppointmentNotes" placeholder="Notas adicionales sobre la cita" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="hideModal('editAppointmentModal')">Cancelar</button>
+                    <button class="btn btn-primary" onclick="updateAppointment()">Actualizar Cita</button>
+                    <button class="btn btn-danger" onclick="cancelAppointment()">Cancelar Cita</button>
+                </div>
+            </div>
+        </div>
     `;
     
     moduleContent.innerHTML = html;
-    updateAppointmentStats();
-    renderAppointmentsList();
+    console.log('Llamando a loadAppointments()...');
+    loadAppointments();
+    console.log('Llamando a loadPatientsForAppointments()...');
+
+    loadPatientsForAppointments();
+    console.log('Llamando a loadDoctors()...');
+    loadDoctors();
+
+        console.log('=== MÓDULO DE CITAS CARGADO ===');
+}
+
+async function loadAppointments() {
+    const result = await loadAppointmentsFromDB();
+    
+    if (result.success) {
+        appointmentsList = result.data;
+        updateAppointmentStats();
+        renderAppointmentsList();
+    } else {
+        const container = document.getElementById('appointmentsList');
+        if (container) {
+            showError('appointmentsList', 'Error al cargar citas: ' + result.error);
+        }
+    }
+}
+
+async function loadPatientsForAppointments() {
+    const result = await loadPatientsFromDB();
+    
+    if (result.success) {
+        patientsListForAppointments = result.data;
+        
+        const patientOptions = patientsListForAppointments.map(p => 
+            `<option value="${p.id}">${escapeHtml(p.nombre)} - ${p.cedula || ''}</option>`
+        ).join('');
+        
+        const newPatientSelect = document.getElementById('appointmentPatientId');
+        const editPatientSelect = document.getElementById('editAppointmentPatientId');
+        
+        if (newPatientSelect) {
+            newPatientSelect.innerHTML = '<option value="">Selecciona un paciente</option>' + patientOptions;
+        }
+        if (editPatientSelect) {
+            editPatientSelect.innerHTML = '<option value="">Selecciona un paciente</option>' + patientOptions;
+        }
+    }
+}
+
+async function loadDoctors() {
+    console.log('=== INICIANDO CARGA DE MÉDICOS ===');
+    console.log('1. Llamando a loadDoctorsFromDB()...');
+    
+    const result = await loadDoctorsFromDB();
+    
+    console.log('2. Resultado de loadDoctorsFromDB:', result);
+    
+    if (result.success) {
+        doctorsList = result.data;
+        console.log('3. Médicos cargados exitosamente. Cantidad:', doctorsList.length);
+        console.log('4. Datos de médicos:', doctorsList);
+        
+        const doctorOptions = doctorsList.map(d => 
+            `<option value="${d.id}">${escapeHtml(d.name)} - ${d.specialty || 'General'}</option>`
+        ).join('');
+        
+        console.log('5. Opciones generadas:', doctorOptions);
+        
+        const newDoctorSelect = document.getElementById('appointmentDoctorId');
+        const editDoctorSelect = document.getElementById('editAppointmentDoctorId');
+        
+        console.log('6. Elementos select encontrados:', {
+            'appointmentDoctorId': !!newDoctorSelect,
+            'editAppointmentDoctorId': !!editDoctorSelect
+        });
+        
+        if (newDoctorSelect) {
+            newDoctorSelect.innerHTML = '<option value="">Seleccionar médico</option>' + doctorOptions;
+            console.log('7. Select de médicos actualizado. Total opciones:', newDoctorSelect.options.length);
+        } else {
+            console.error('7. ERROR: No se encontró el elemento con id "appointmentDoctorId"');
+        }
+        
+        if (editDoctorSelect) {
+            editDoctorSelect.innerHTML = '<option value="">Seleccionar médico</option>' + doctorOptions;
+        }
+    } else {
+        console.error('ERROR al cargar médicos:', result.error);
+        const newDoctorSelect = document.getElementById('appointmentDoctorId');
+        if (newDoctorSelect) {
+            newDoctorSelect.innerHTML = '<option value="">Error al cargar médicos: ' + result.error + '</option>';
+        }
+    }
+    
+    console.log('=== FIN CARGA DE MÉDICOS ===');
 }
 
 function updateAppointmentStats() {
-    const total = appointmentsData.length;
-    const confirmed = appointmentsData.filter(a => a.status === 'confirmada').length;
-    const pending = appointmentsData.filter(a => a.status === 'pendiente').length;
-    const completed = appointmentsData.filter(a => a.status === 'completada').length;
+    const total = appointmentsList.length;
+    const confirmed = appointmentsList.filter(a => a.status === 'confirmada').length;
+    const pending = appointmentsList.filter(a => a.status === 'pendiente').length;
+    const completed = appointmentsList.filter(a => a.status === 'completada').length;
     
-    document.getElementById('totalAppointments').textContent = total;
-    document.getElementById('confirmedAppointments').textContent = confirmed;
-    document.getElementById('pendingAppointments').textContent = pending;
-    document.getElementById('completedAppointments').textContent = completed;
+    const totalEl = document.getElementById('totalAppointments');
+    const confirmedEl = document.getElementById('confirmedAppointments');
+    const pendingEl = document.getElementById('pendingAppointments');
+    const completedEl = document.getElementById('completedAppointments');
+    
+    if (totalEl) totalEl.textContent = total;
+    if (confirmedEl) confirmedEl.textContent = confirmed;
+    if (pendingEl) pendingEl.textContent = pending;
+    if (completedEl) completedEl.textContent = completed;
 }
 
 function renderAppointmentsList() {
     const container = document.getElementById('appointmentsList');
-    const todayAppointments = appointmentsData.filter(apt => apt.date === selectedDate);
+    if (!container) return;
     
-    document.getElementById('appointmentsDateTitle').textContent = `Citas del ${formatDateLong(selectedDate)}`;
-    document.getElementById('appointmentsCount').textContent = 
-        `${todayAppointments.length} ${todayAppointments.length === 1 ? 'cita programada' : 'citas programadas'}`;
+    const todayAppointments = appointmentsList.filter(apt => apt.date === selectedDate);
     
-    document.getElementById('todayCount').textContent = todayAppointments.length;
-    document.getElementById('availableSlots').textContent = 
-        `${Math.max(0, 10 - todayAppointments.length)} slots`;
+    const dateTitleEl = document.getElementById('appointmentsDateTitle');
+    const countEl = document.getElementById('appointmentsCount');
+    const todayCountEl = document.getElementById('todayCount');
+    const availableSlotsEl = document.getElementById('availableSlots');
+    
+    if (dateTitleEl) dateTitleEl.textContent = `Citas del ${formatDateLong(selectedDate)}`;
+    if (countEl) countEl.textContent = `${todayAppointments.length} ${todayAppointments.length === 1 ? 'cita programada' : 'citas programadas'}`;
+    if (todayCountEl) todayCountEl.textContent = todayAppointments.length;
+    if (availableSlotsEl) availableSlotsEl.textContent = `${Math.max(0, 10 - todayAppointments.length)} slots`;
     
     if (todayAppointments.length === 0) {
         container.innerHTML = `
             <div class="text-center" style="padding: 3rem; color: var(--gray-500);">
                 ${icons.calendar}
                 <p style="margin-top: 0.75rem;">No hay citas programadas para este día</p>
+                <button class="btn btn-outline mt-4" onclick="openNewAppointmentModal()">Agendar Cita</button>
             </div>
         `;
         return;
@@ -213,24 +391,27 @@ function renderAppointmentsList() {
             </div>
             <div class="appointment-details">
                 <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                    <h4 class="font-semibold">${apt.patientName}</h4>
+                    <h4 class="font-semibold">${escapeHtml(apt.patientName)}</h4>
                     ${createStatusBadge(apt.status)}
                 </div>
                 <div class="text-sm" style="color: var(--gray-600);">
                     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
                         ${icons.user}
-                        <span>${apt.doctor}</span>
+                        <span>Dr. ${escapeHtml(apt.doctor)}</span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         ${icons.alertCircle}
-                        <span>${apt.type}</span>
+                        <span>${escapeHtml(apt.type || 'Consulta General')}</span>
                     </div>
                 </div>
             </div>
             <div class="appointment-actions">
-                <button class="btn btn-outline btn-sm">Editar</button>
+                <button class="btn btn-outline btn-sm" onclick="editAppointment('${apt.id}')">Editar</button>
                 ${apt.status === 'pendiente' ? `
                     <button class="btn btn-success btn-sm" onclick="confirmAppointment('${apt.id}')">Confirmar</button>
+                ` : ''}
+                ${apt.status === 'confirmada' ? `
+                    <button class="btn btn-secondary btn-sm" onclick="completeAppointment('${apt.id}')">Completar</button>
                 ` : ''}
             </div>
         </div>
@@ -243,20 +424,125 @@ function changeDate(newDate) {
 }
 
 function openNewAppointmentModal() {
+    // Set default date to selected date
+    const dateInput = document.getElementById('appointmentDate');
+    if (dateInput) {
+        dateInput.value = selectedDate;
+    }
     showModal('newAppointmentModal');
 }
 
-function saveNewAppointment() {
-    // In a real app, this would save to database
-    alert('Funcionalidad de guardado no implementada en esta demo');
-    hideModal('newAppointmentModal');
+async function saveNewAppointment() {
+    const appointmentData = {
+        patientId: document.getElementById('appointmentPatientId').value,
+        doctorId: document.getElementById('appointmentDoctorId').value,
+        date: document.getElementById('appointmentDate').value,
+        time: document.getElementById('appointmentTime').value,
+        type: document.getElementById('appointmentType').value,
+        notes: document.getElementById('appointmentNotes').value,
+        status: 'pendiente'
+    };
+    
+    // Validate required fields
+    if (!appointmentData.patientId || !appointmentData.doctorId || !appointmentData.date || !appointmentData.time) {
+        alert('Por favor complete todos los campos requeridos');
+        return;
+    }
+    
+    const result = await saveAppointmentToDB(appointmentData);
+    
+    if (result.success) {
+        showNotification('Cita agendada exitosamente');
+        hideModal('newAppointmentModal');
+        await loadAppointments();
+    } else {
+        alert('Error al guardar cita: ' + result.error);
+    }
 }
 
-function confirmAppointment(appointmentId) {
-    const appointment = appointmentsData.find(a => a.id === appointmentId);
-    if (appointment) {
-        appointment.status = 'confirmada';
-        updateAppointmentStats();
-        renderAppointmentsList();
+async function editAppointment(appointmentId) {
+    const appointment = appointmentsList.find(a => a.id === appointmentId);
+    if (!appointment) return;
+    
+    // Fill edit form
+    document.getElementById('editAppointmentId').value = appointment.id;
+    document.getElementById('editAppointmentPatientId').value = appointment.patientId || '';
+    document.getElementById('editAppointmentDoctorId').value = appointment.doctorId || '';
+    document.getElementById('editAppointmentDate').value = appointment.date;
+    document.getElementById('editAppointmentTime').value = appointment.time;
+    document.getElementById('editAppointmentType').value = appointment.type || 'Consulta General';
+    document.getElementById('editAppointmentStatus').value = appointment.status;
+    document.getElementById('editAppointmentNotes').value = appointment.notes || '';
+    
+    showModal('editAppointmentModal');
+}
+
+async function updateAppointment() {
+    const appointmentId = document.getElementById('editAppointmentId').value;
+    
+    const appointmentData = {
+        patientId: document.getElementById('editAppointmentPatientId').value,
+        doctorId: document.getElementById('editAppointmentDoctorId').value,
+        date: document.getElementById('editAppointmentDate').value,
+        time: document.getElementById('editAppointmentTime').value,
+        type: document.getElementById('editAppointmentType').value,
+        status: document.getElementById('editAppointmentStatus').value,
+        notes: document.getElementById('editAppointmentNotes').value
+    };
+    
+    // Validate required fields
+    if (!appointmentData.patientId || !appointmentData.doctorId || !appointmentData.date || !appointmentData.time) {
+        alert('Por favor complete todos los campos requeridos');
+        return;
+    }
+    
+    const result = await updateAppointmentStatus(appointmentId, appointmentData.status);
+    
+    if (result.success) {
+        showNotification('Cita actualizada exitosamente');
+        hideModal('editAppointmentModal');
+        await loadAppointments();
+    } else {
+        alert('Error al actualizar cita: ' + result.error);
+    }
+}
+
+async function confirmAppointment(appointmentId) {
+    const result = await updateAppointmentStatus(appointmentId, 'confirmada');
+    
+    if (result.success) {
+        showNotification('Cita confirmada exitosamente');
+        await loadAppointments();
+    } else {
+        alert('Error al confirmar cita: ' + result.error);
+    }
+}
+
+async function completeAppointment(appointmentId) {
+    const result = await updateAppointmentStatus(appointmentId, 'completada');
+    
+    if (result.success) {
+        showNotification('Cita marcada como completada');
+        await loadAppointments();
+    } else {
+        alert('Error al completar cita: ' + result.error);
+    }
+}
+
+async function cancelAppointment() {
+    const appointmentId = document.getElementById('editAppointmentId').value;
+    
+    const confirmed = confirm('¿Está seguro de cancelar esta cita?');
+    
+    if (confirmed) {
+        const result = await updateAppointmentStatus(appointmentId, 'cancelada');
+        
+        if (result.success) {
+            showNotification('Cita cancelada');
+            hideModal('editAppointmentModal');
+            await loadAppointments();
+        } else {
+            alert('Error al cancelar cita: ' + result.error);
+        }
     }
 }
