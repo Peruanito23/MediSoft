@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Políticas - Consultorio Medisoft</title>
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="politicas.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="inicio.html" class="logo-container">
+        <div class="logo">+</div>
+        <div class="logo-text">
+          <h1>Consultorio Medisoft</h1>
+          <p>Cuidando tu bienestar</p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <a href="inicio.html" class="nav-link">Inicio</a>
+        <a href="equipo.html" class="nav-link">Nuestro Equipo</a>
+        <a href="politicas.html" class="nav-link">Políticas</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-acceder">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <span>Acceder</span>
+        </button>
+        <button class="btn btn-admin" onclick="openAdminModal()">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6"></path></svg>
+          <span>Administrar</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <svg id="menu-icon" class="icon-md" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg id="close-icon" class="icon-md hidden" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav id="mobile-nav" class="mobile-nav">
+      <a href="inicio.html" class="nav-link" onclick="closeMobileMenu()">Inicio</a>
+      <a href="equipo.html" class="nav-link" onclick="closeMobileMenu()">Nuestro Equipo</a>
+      <a href="politicas.html" class="nav-link" onclick="closeMobileMenu()">Políticas</a>
+      <div class="mobile-actions">
+        <button class="btn btn-acceder">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <span>Acceder</span>
+        </button>
+        <button class="btn btn-admin">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6"></path></svg>
+          <span>Administrar</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Header -->
+    <section class="policies-header">
+      <div class="container">
+        <div class="policies-header-content">
+          <h1>Políticas del Consultorio</h1>
+          <p>
+            Información importante sobre nuestras políticas y procedimientos para garantizar
+            la mejor experiencia de atención médica.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Overview -->
+    <section class="overview-section">
+      <div class="container">
+        <div class="overview-grid">
+          <div class="card overview-card">
+            <div class="overview-icon">
+              <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3>Puntualidad</h3>
+            <p>Llegar 10 minutos antes de la cita</p>
+          </div>
+
+          <div class="card overview-card">
+            <div class="overview-icon">
+              <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3>Documentación</h3>
+            <p>Traer identificación y tarjeta de seguro</p>
+          </div>
+
+          <div class="card overview-card">
+            <div class="overview-icon">
+              <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3>Privacidad</h3>
+            <p>Tus datos están protegidos y seguros</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Policies -->
+    <section class="policies-section">
+      <div class="container">
+        <div class="accordion">
+          <!-- Citas -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div class="accordion-title">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Política de Citas y Cancelaciones</span>
+              </div>
+              <svg class="icon chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <div class="policy-section">
+                <h4>Reserva de Citas</h4>
+                <ul>
+                  <li>Las citas pueden agendarse por teléfono, email o en persona</li>
+                  <li>Se recomienda agendar con al menos 48 horas de anticipación</li>
+                  <li>Recibirá una confirmación por email o SMS</li>
+                  <li>Para urgencias, contamos con atención el mismo día</li>
+                </ul>
+              </div>
+
+              <div class="policy-section">
+                <h4>Puntualidad</h4>
+                <ul>
+                  <li>Por favor, llegue 10 minutos antes de su cita</li>
+                  <li>Este tiempo permite completar el registro y la documentación</li>
+                  <li>Los retrasos mayores a 15 minutos pueden requerir reagendar</li>
+                </ul>
+              </div>
+
+              <div class="policy-section">
+                <h4>Cancelaciones</h4>
+                <ul>
+                  <li>Debe cancelar o reprogramar con al menos 24 horas de anticipación</li>
+                  <li>Cancelaciones tardías pueden incurrir en un cargo del 50%</li>
+                  <li>No presentarse sin aviso (no-show) puede resultar en cargo completo</li>
+                  <li>Entendemos emergencias y situaciones especiales</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagos -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div class="accordion-title">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                <span>Política de Pagos y Facturación</span>
+              </div>
+              <svg class="icon chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <div class="policy-section">
+                <h4>Métodos de Pago</h4>
+                <ul>
+                  <li>Efectivo</li>
+                  <li>Tarjetas de crédito y débito (Visa, Mastercard, American Express)</li>
+                  <li>Transferencia bancaria</li>
+                  <li>Seguros médicos (consulte lista de aseguradoras aceptadas)</li>
+                </ul>
+              </div>
+
+              <div class="policy-section">
+                <h4>Facturación</h4>
+                <ul>
+                  <li>El pago se realiza al momento del servicio</li>
+                  <li>Recibirá factura detallada después de cada visita</li>
+                  <li>Facturas para seguros disponibles inmediatamente</li>
+                  <li>Consulte precios antes de procedimientos especiales</li>
+                </ul>
+              </div>
+
+              <div class="policy-section">
+                <h4>Seguros Médicos</h4>
+                <ul>
+                  <li>Aceptamos los principales seguros médicos</li>
+                  <li>Verifique su cobertura antes de la cita</li>
+                  <li>Traiga su tarjeta de seguro a cada visita</li>
+                  <li>El copago debe pagarse el día de la consulta</li>
+                </ul>
+              </div>
+
+              <div class="alert alert-info">
+                <svg class="icon" style="color: #2563eb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <p><strong>Nota:</strong> Los servicios no cubiertos por el seguro son responsabilidad del paciente y deben pagarse el mismo día.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Privacidad -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div class="accordion-title">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Política de Privacidad y Confidencialidad</span>
+              </div>
+              <svg class="icon chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <div class="policy-section">
+                <h4>Protección de Datos</h4>
+                <p style="margin-bottom: 0.5rem;">
+                  Clínica Salud se compromete a proteger la privacidad y confidencialidad de
+                  la información de nuestros pacientes, cumpliendo con el Reglamento General
+                  de Protección de Datos (RGPD) y la legislación española vigente.
+                </p>
+                <ul>
+                  <li>Toda información médica es estrictamente confidencial</li>
+                  <li>Sistemas seguros con encriptación para datos electrónicos</li>
+                  <li>Acceso limitado solo a personal autorizado</li>
+                  <li>Historiales médicos almacenados de forma segura</li>
+                </ul>
+              </div>
+
+              <div class="policy-section">
+                <h4>Uso de la Información</h4>
+                <ul>
+                  <li>Atención y tratamiento médico</li>
+                  <li>Facturación y gestión administrativa</li>
+                  <li>Comunicaciones relacionadas con su atención</li>
+                  <li>Cumplimiento de requisitos legales</li>
+                </ul>
+              </div>
+
+              <div class="policy-section">
+                <h4>Sus Derechos</h4>
+                <ul>
+                  <li>Acceso a su historial médico</li>
+                  <li>Corrección de información inexacta</li>
+                  <li>Solicitud de copias de sus registros</li>
+                  <li>Restricción del uso de su información</li>
+                  <li>Derecho al olvido (bajo condiciones legales)</li>
+                </ul>
+              </div>
+
+              <div class="alert alert-success">
+                <svg class="icon" style="color: #16a34a" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <p>Nunca compartiremos su información personal con terceros sin su consentimiento expreso, excepto cuando sea requerido por ley.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Derechos del Paciente -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div class="accordion-title">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span>Derechos y Responsabilidades del Paciente</span>
+              </div>
+              <svg class="icon chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <div class="policy-section">
+                <h4>Derechos del Paciente</h4>
+                <ul>
+                  <li>Recibir atención médica de calidad y respetuosa</li>
+                  <li>Ser informado sobre diagnósticos y tratamientos</li>
+                  <li>Participar en decisiones sobre su atención médica</li>
+                  <li>Recibir información clara sobre costos y procedimientos</li>
+                  <li>Confidencialidad de su información médica</li>
+                  <li>Solicitar una segunda opinión</li>
+                  <li>Rechazar tratamientos (salvo en emergencias vitales)</li>
+                  <li>Presentar quejas o sugerencias</li>
+                </ul>
+              </div>
+
+              <div class="policy-section">
+                <h4>Responsabilidades del Paciente</h4>
+                <ul>
+                  <li>Proporcionar información médica completa y veraz</li>
+                  <li>Seguir el plan de tratamiento acordado</li>
+                  <li>Respetar las políticas de la clínica</li>
+                  <li>Informar sobre alergias y medicamentos actuales</li>
+                  <li>Hacer preguntas cuando algo no esté claro</li>
+                  <li>Cumplir con los compromisos de pago</li>
+                  <li>Tratar al personal con respeto y cortesía</li>
+                  <li>Notificar cambios en su estado de salud</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Normas de Conducta -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div class="accordion-title">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Normas de Conducta en las Instalaciones</span>
+              </div>
+              <svg class="icon chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <div class="policy-section">
+                <h4>Para Crear un Ambiente Seguro</h4>
+                <ul>
+                  <li>Prohibido fumar en todas las instalaciones</li>
+                  <li>Mantener teléfonos en silencio o modo vibración</li>
+                  <li>Respetar las áreas de acceso restringido</li>
+                  <li>Un acompañante por paciente (excepto en casos especiales)</li>
+                  <li>Los niños deben estar supervisados en todo momento</li>
+                  <li>No están permitidas las mascotas (excepto animales de servicio)</li>
+                </ul>
+              </div>
+
+              <div class="policy-section">
+                <h4>Protocolo de Seguridad</h4>
+                <ul>
+                  <li>Seguir las indicaciones del personal en caso de emergencia</li>
+                  <li>Reportar cualquier comportamiento sospechoso</li>
+                  <li>Mantener pertenencias personales bajo su cuidado</li>
+                  <li>Respetar la privacidad de otros pacientes</li>
+                </ul>
+              </div>
+
+              <div class="alert alert-warning">
+                <svg class="icon" style="color: #d97706" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <p><strong>Importante:</strong> Nos reservamos el derecho de negar el servicio o solicitar el retiro de las instalaciones a cualquier persona que muestre comportamiento agresivo, abusivo o amenazante hacia el personal o demás pacientes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>¿Tienes Preguntas?</h2>
+          <p>
+            Si tienes dudas sobre nuestras políticas o necesitas más información, no dudes en
+            contactarnos. Estamos aquí para ayudarte.
+          </p>
+          <a href="inicio.html#contacto" class="btn-primary">Contáctanos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <div class="logo">+</div>
+            <h3>Consultorio Medisoft</h3>
+          </div>
+          <p>Comprometidos con tu salud y bienestar desde 1995</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <div class="footer-info">
+            <svg class="icon-sm" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>809-555-0000</span>
+          </div>
+          <div class="footer-info">
+            <svg class="icon-sm" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>infoMedisoft@gmail.com</span>
+          </div>
+          <div class="footer-info">
+            <svg class="icon-sm" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Calle Restauración #45, San Francisco de Macorís</span>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Horario</h4>
+          <p>Lunes - Viernes: 8:00 - 20:00</p>
+          <p>Sábados: 9:00 - 14:00</p>
+          <p>Domingos: Cerrado</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Consultorio Medisoft. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin Modal -->
+  <div id="admin-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Panel de Administración</h2>
+        <button class="modal-close" onclick="closeAdminModal()">
+          <svg class="icon-md" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Theme Selection -->
+        <div class="modal-section">
+          <h3>Tema de la Página</h3>
+          <div class="theme-options">
+            <div class="theme-option active" data-theme="light" onclick="changeTheme('light')">
+              <div class="theme-preview light"></div>
+              <p>Claro</p>
+            </div>
+            <div class="theme-option" data-theme="dark" onclick="changeTheme('dark')">
+              <div class="theme-preview dark"></div>
+              <p>Oscuro</p>
+            </div>
+            <div class="theme-option" data-theme="gray" onclick="changeTheme('gray')">
+              <div class="theme-preview gray"></div>
+              <p>Gris</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Login -->
+        <div class="modal-section">
+          <h3>Acceso de Administrador</h3>
+          <div class="admin-info">
+            <p><strong>Credenciales de prueba:</strong></p>
+            <p>Usuario: <strong>admin</strong></p>
+            <p>Contraseña: <strong>medisoft2024</strong></p>
+          </div>
+          
+          <form id="admin-login-form" class="login-form">
+            <div class="form-group">
+              <label for="admin-username">Usuario</label>
+              <input type="text" id="admin-username" name="username" placeholder="Ingrese su usuario" required>
+            </div>
+            <div class="form-group">
+              <label for="admin-password">Contraseña</label>
+              <input type="password" id="admin-password" name="password" placeholder="Ingrese su contraseña" required>
+            </div>
+            <button type="submit" class="btn-login">Iniciar Sesión</button>
+            <div id="login-message" class="login-message"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="politicas.js"></script>
+</body>
+</html>

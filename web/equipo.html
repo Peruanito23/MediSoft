@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestro Equipo - Consultorio Medisoft</title>
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="equipo.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="inicio.html" class="logo-container">
+        <div class="logo">+</div>
+        <div class="logo-text">
+          <h1>Consultorio Medisoft</h1>
+          <p>Cuidando tu bienestar</p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <a href="inicio.html" class="nav-link">Inicio</a>
+        <a href="equipo.html" class="nav-link">Nuestro Equipo</a>
+        <a href="politicas.html" class="nav-link">Políticas</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-acceder">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <span>Acceder</span>
+        </button>
+        <button class="btn btn-admin" onclick="openAdminModal()">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6"></path></svg>
+          <span>Administrar</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <svg id="menu-icon" class="icon-md" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg id="close-icon" class="icon-md hidden" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav id="mobile-nav" class="mobile-nav">
+      <a href="inicio.html" class="nav-link" onclick="closeMobileMenu()">Inicio</a>
+      <a href="equipo.html" class="nav-link" onclick="closeMobileMenu()">Nuestro Equipo</a>
+      <a href="politicas.html" class="nav-link" onclick="closeMobileMenu()">Políticas</a>
+      <div class="mobile-actions">
+        <button class="btn btn-acceder">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <span>Acceder</span>
+        </button>
+        <button class="btn btn-admin">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6"></path></svg>
+          <span>Administrar</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Header -->
+    <section class="team-header">
+      <div class="container">
+        <div class="team-header-content">
+          <h1>Nuestro Equipo Médico</h1>
+          <p>
+            Profesionales altamente cualificados dedicados a tu salud y bienestar. Cada
+            miembro de nuestro equipo está comprometido con la excelencia en la atención
+            médica.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Grid -->
+    <section class="team-section">
+      <div class="container">
+        <div class="team-grid">
+          <!-- Doctor 1 -->
+          <div class="card doctor-card">
+            <div class="doctor-layout">
+              <div class="doctor-image">
+                <img src="https://images.unsplash.com/photo-1615177393114-bd2917a4f74a?w=400" alt="Dr. Rafael Rodríguez">
+              </div>
+              <div class="doctor-info">
+                <div class="doctor-header">
+                  <div>
+                    <h3>Dr. Rafael Rodríguez</h3>
+                    <p class="specialty">Medicina General</p>
+                  </div>
+                  <div class="award-icon">
+                    <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                  </div>
+                </div>
+
+                <p class="doctor-description">
+                  Especializado en medicina preventiva y atención integral. Comprometido con el bienestar de cada paciente.
+                </p>
+
+                <div class="doctor-details">
+                  <div class="detail-item">
+                    <span class="detail-label">Formación:</span>
+                    Universidad Autónoma de Santo Domingo (UASD)
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Experiencia:</span>
+                    15 años de experiencia
+                  </div>
+                </div>
+
+                <div class="doctor-contact">
+                  <div class="contact-item">
+                    <svg class="icon-sm" style="color: #2563eb" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <a href="mailto:rrodriguez@medisoft.com.do">rrodriguez@medisoft.com.do</a>
+                  </div>
+                  <div class="contact-item">
+                    <svg class="icon-sm" style="color: #2563eb" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <a href="tel:809-555-0001">809-555-0001</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 2 -->
+          <div class="card doctor-card">
+            <div class="doctor-layout">
+              <div class="doctor-image">
+                <img src="https://images.unsplash.com/photo-1772987057599-2f1088c1e993?w=400" alt="Dra. María Santos">
+              </div>
+              <div class="doctor-info">
+                <div class="doctor-header">
+                  <div>
+                    <h3>Dra. María Santos</h3>
+                    <p class="specialty">Cardiología</p>
+                  </div>
+                  <div class="award-icon">
+                    <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                  </div>
+                </div>
+
+                <p class="doctor-description">
+                  Experta en enfermedades cardiovasculares y prevención. Certificada en cardiología intervencionista.
+                </p>
+
+                <div class="doctor-details">
+                  <div class="detail-item">
+                    <span class="detail-label">Formación:</span>
+                    Pontificia Universidad Católica Madre y Maestra (PUCMM)
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Experiencia:</span>
+                    12 años de experiencia
+                  </div>
+                </div>
+
+                <div class="doctor-contact">
+                  <div class="contact-item">
+                    <svg class="icon-sm" style="color: #2563eb" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <a href="mailto:msantos@medisoft.com.do">msantos@medisoft.com.do</a>
+                  </div>
+                  <div class="contact-item">
+                    <svg class="icon-sm" style="color: #2563eb" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <a href="tel:809-555-0002">809-555-0002</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 3 -->
+          <div class="card doctor-card">
+            <div class="doctor-layout">
+              <div class="doctor-image">
+                <img src="https://images.unsplash.com/photo-1632054226038-ed6997bfce1f?w=400" alt="Dr. Juan Pérez">
+              </div>
+              <div class="doctor-info">
+                <div class="doctor-header">
+                  <div>
+                    <h3>Dr. Juan Pérez</h3>
+                    <p class="specialty">Pediatría</p>
+                  </div>
+                  <div class="award-icon">
+                    <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                  </div>
+                </div>
+
+                <p class="doctor-description">
+                  Dedicado a la salud infantil y el desarrollo pediátrico. Especialista en medicina preventiva infantil.
+                </p>
+
+                <div class="doctor-details">
+                  <div class="detail-item">
+                    <span class="detail-label">Formación:</span>
+                    Universidad Nacional Pedro Henríquez Ureña (UNPHU)
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Experiencia:</span>
+                    10 años de experiencia
+                  </div>
+                </div>
+
+                <div class="doctor-contact">
+                  <div class="contact-item">
+                    <svg class="icon-sm" style="color: #2563eb" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <a href="mailto:jperez@medisoft.com.do">jperez@medisoft.com.do</a>
+                  </div>
+                  <div class="contact-item">
+                    <svg class="icon-sm" style="color: #2563eb" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <a href="tel:809-555-0003">809-555-0003</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 4 -->
+          <div class="card doctor-card">
+            <div class="doctor-layout">
+              <div class="doctor-image">
+                <img src="https://images.unsplash.com/photo-1723649379227-498e2ebf25c6?w=400" alt="Dra. Carmen Jiménez">
+              </div>
+              <div class="doctor-info">
+                <div class="doctor-header">
+                  <div>
+                    <h3>Dra. Carmen Jiménez</h3>
+                    <p class="specialty">Dermatología</p>
+                  </div>
+                  <div class="award-icon">
+                    <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                  </div>
+                </div>
+
+                <p class="doctor-description">
+                  Especializada en dermatología clínica y estética. Tratamientos avanzados para la salud de la piel.
+                </p>
+
+                <div class="doctor-details">
+                  <div class="detail-item">
+                    <span class="detail-label">Formación:</span>
+                    Universidad Iberoamericana (UNIBE)
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Experiencia:</span>
+                    8 años de experiencia
+                  </div>
+                </div>
+
+                <div class="doctor-contact">
+                  <div class="contact-item">
+                    <svg class="icon-sm" style="color: #2563eb" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <a href="mailto:cjimenez@medisoft.com.do">cjimenez@medisoft.com.do</a>
+                  </div>
+                  <div class="contact-item">
+                    <svg class="icon-sm" style="color: #2563eb" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <a href="tel:809-555-0004">809-555-0004</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>¿Tienes Preguntas?</h2>
+          <p>
+            Nuestro equipo está listo para atenderte. No dudes en ponerte en contacto con nosotros para cualquier consulta o información adicional.
+          </p>
+          <a href="inicio.html#contacto" class="btn-primary">Contáctanos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <div class="logo">+</div>
+            <h3>Consultorio Medisoft</h3>
+          </div>
+          <p>Comprometidos con tu salud y bienestar desde 1995</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <div class="footer-info">
+            <svg class="icon-sm" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>809-555-0000</span>
+          </div>
+          <div class="footer-info">
+            <svg class="icon-sm" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>infoMedisoft@gmail.com</span>
+          </div>
+          <div class="footer-info">
+            <svg class="icon-sm" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Calle Restauración #45, San Francisco de Macorís</span>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Horario</h4>
+          <p>Lunes - Viernes: 8:00 - 20:00</p>
+          <p>Sábados: 9:00 - 14:00</p>
+          <p>Domingos: Cerrado</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Consultorio Medisoft. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin Modal -->
+  <div id="admin-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Panel de Administración</h2>
+        <button class="modal-close" onclick="closeAdminModal()">
+          <svg class="icon-md" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Theme Selection -->
+        <div class="modal-section">
+          <h3>Tema de la Página</h3>
+          <div class="theme-options">
+            <div class="theme-option active" data-theme="light" onclick="changeTheme('light')">
+              <div class="theme-preview light"></div>
+              <p>Claro</p>
+            </div>
+            <div class="theme-option" data-theme="dark" onclick="changeTheme('dark')">
+              <div class="theme-preview dark"></div>
+              <p>Oscuro</p>
+            </div>
+            <div class="theme-option" data-theme="gray" onclick="changeTheme('gray')">
+              <div class="theme-preview gray"></div>
+              <p>Gris</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Login -->
+        <div class="modal-section">
+          <h3>Acceso de Administrador</h3>
+          <div class="admin-info">
+            <p><strong>Credenciales de prueba:</strong></p>
+            <p>Usuario: <strong>admin</strong></p>
+            <p>Contraseña: <strong>medisoft2024</strong></p>
+          </div>
+          
+          <form id="admin-login-form" class="login-form">
+            <div class="form-group">
+              <label for="admin-username">Usuario</label>
+              <input type="text" id="admin-username" name="username" placeholder="Ingrese su usuario" required>
+            </div>
+            <div class="form-group">
+              <label for="admin-password">Contraseña</label>
+              <input type="password" id="admin-password" name="password" placeholder="Ingrese su contraseña" required>
+            </div>
+            <button type="submit" class="btn-login">Iniciar Sesión</button>
+            <div id="login-message" class="login-message"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>

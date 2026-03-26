@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Consultorio Medisoft</title>
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="inicio.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="inicio.html" class="logo-container">
+        <div class="logo">+</div>
+        <div class="logo-text">
+          <h1>Consultorio Medisoft</h1>
+          <p>Cuidando tu bienestar</p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <a href="inicio.html" class="nav-link">Inicio</a>
+        <a href="equipo.html" class="nav-link">Nuestro Equipo</a>
+        <a href="politicas.html" class="nav-link">Políticas</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-acceder">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <a href="../sistema/index.html" style="color: inherit; text-decoration: none;">Acceder</a>
+        </button>
+        <button class="btn btn-admin" onclick="openAdminModal()">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6"></path></svg>
+          <span>Administrar</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <svg id="menu-icon" class="icon-md" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg id="close-icon" class="icon-md hidden" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav id="mobile-nav" class="mobile-nav">
+      <a href="inicio.html" class="nav-link" onclick="closeMobileMenu()">Inicio</a>
+      <a href="equipo.html" class="nav-link" onclick="closeMobileMenu()">Nuestro Equipo</a>
+      <a href="politicas.html" class="nav-link" onclick="closeMobileMenu()">Políticas</a>
+      <div class="mobile-actions">
+        <button class="btn btn-acceder">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <span>Acceder</span>
+        </button>
+        <button class="btn btn-admin">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6"></path></svg>
+          <span>Administrar</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <h1>Bienvenido a Consultorio Medisoft</h1>
+            <p class="hero-subtitle">
+              Tu salud es nuestra prioridad. Ofrecemos atención médica de calidad con
+              profesionales experimentados y tecnología de última generación.
+            </p>
+            <div class="hero-buttons">
+              <a href="#contacto" class="btn-primary">Contactar Ahora</a>
+              <a href="#sobre-nosotros" class="btn-secondary">Conocer Más</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1762625570087-6d98fca29531?w=1080" alt="Clínica moderna">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+      <div class="container">
+        <div class="values-grid">
+          <div class="value-card card">
+            <div class="value-icon">
+              <svg class="icon-lg" style="color: #2563eb" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <h3>Atención Personalizada</h3>
+            <p>Cada paciente es único. Adaptamos nuestros tratamientos a tus necesidades específicas.</p>
+          </div>
+
+          <div class="value-card card">
+            <div class="value-icon">
+              <svg class="icon-lg" style="color: #2563eb" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3>Equipo Experimentado</h3>
+            <p>Profesionales altamente cualificados con años de experiencia en diversas especialidades.</p>
+          </div>
+
+          <div class="value-card card">
+            <div class="value-icon">
+              <svg class="icon-lg" style="color: #2563eb" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            </div>
+            <h3>Tecnología Avanzada</h3>
+            <p>Equipamiento médico de última generación para diagnósticos precisos y tratamientos efectivos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre-nosotros" class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1758691463198-dc663b8a64e4?w=1080" alt="Consultorio médico">
+          </div>
+          <div class="about-content">
+            <h2>Nuestra Historia</h2>
+            <div class="about-text">
+              <p>
+                Fundada en 1995, <strong>Consultorio Medisoft</strong> nació con la visión de
+                ofrecer atención médica de calidad accesible para toda la comunidad de San Francisco de Macorís. Durante
+                más de tres décadas, hemos crecido desde una pequeña consulta hasta
+                convertirnos en un centro médico integral de referencia.
+              </p>
+              <p>
+                Nuestro compromiso siempre ha sido el mismo: poner al paciente en el centro
+                de todo lo que hacemos. Combinamos la experiencia de nuestros profesionales
+                con la tecnología más avanzada para proporcionar diagnósticos precisos y
+                tratamientos efectivos.
+              </p>
+              <p>
+                Hoy, atendemos a más de 10,000 pacientes al año en diversas especialidades,
+                manteniendo siempre nuestros valores fundamentales de excelencia, empatía e
+                innovación.
+              </p>
+            </div>
+            <div class="about-stats">
+              <div class="stat-item">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Más de 30 años de experiencia</span>
+              </div>
+              <div class="stat-item">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>10,000+ pacientes atendidos anualmente</span>
+              </div>
+              <div class="stat-item">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>15 especialidades médicas</span>
+              </div>
+              <div class="stat-item">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Certificaciones internacionales</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision-section">
+      <div class="container">
+        <div class="mission-vision-grid">
+          <div class="card mission-card">
+            <h3>Nuestra Misión</h3>
+            <p>
+              Proporcionar atención médica integral y de excelencia, centrada en el paciente,
+              mediante un equipo de profesionales comprometidos con la salud y el bienestar de
+              nuestra comunidad. Nos esforzamos por ofrecer servicios accesibles, seguros y
+              de la más alta calidad.
+            </p>
+          </div>
+          <div class="card vision-card">
+            <h3>Nuestra Visión</h3>
+            <p>
+              Ser el centro médico de referencia reconocido por la excelencia en la atención,
+              la innovación continua y el compromiso con la salud integral de nuestros
+              pacientes. Aspiramos a liderar el futuro de la medicina preventiva y curativa en
+              nuestra región.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+      <div class="container">
+        <div class="contact-header">
+          <h2>Contáctanos</h2>
+          <p>
+            Estamos aquí para atenderte. No dudes en ponerte en contacto con nosotros para
+            agendar una cita o resolver cualquier duda.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <div class="card contact-card">
+              <div class="contact-icon">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <h3>Dirección</h3>
+                <p>Calle Restauración #45, San Francisco de Macorís, República Dominicana</p>
+              </div>
+            </div>
+
+            <div class="card contact-card">
+              <div class="contact-icon">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <h3>Teléfono</h3>
+                <p>809-555-0000</p>
+                <p class="contact-note">Atención telefónica 24/7</p>
+              </div>
+            </div>
+
+            <div class="card contact-card">
+              <div class="contact-icon">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <h3>Email</h3>
+                <p>infoMedisoft@gmail.com</p>
+                <p class="contact-note">Respuesta en 24 horas hábiles</p>
+              </div>
+            </div>
+
+            <div class="card contact-card">
+              <div class="contact-icon">
+                <svg class="icon-md" style="color: #2563eb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div>
+                <h3>Horario de Atención</h3>
+                <p>Lunes a Viernes: 8:00 - 20:00</p>
+                <p>Sábados: 9:00 - 14:00</p>
+                <p>Domingos: Cerrado</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3785.2447166772!2d-70.25277902407056!3d19.303303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eb1d1cc2cdad9b9%3A0xb0e3f4f2c9e5a5d3!2sSan%20Francisco%20de%20Macor%C3%ADs!5e0!3m2!1ses!2sdo!4v1234567890"
+              width="100%"
+              height="100%"
+              style="border:0; border-radius: 0.5rem;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación de Consultorio Medisoft"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <div class="logo">+</div>
+            <h3>Consultorio Medisoft</h3>
+          </div>
+          <p>Comprometidos con tu salud y bienestar desde 1995</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <div class="footer-info">
+            <svg class="icon-sm" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>809-555-0000</span>
+          </div>
+          <div class="footer-info">
+            <svg class="icon-sm" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>infoMedisoft@gmail.com</span>
+          </div>
+          <div class="footer-info">
+            <svg class="icon-sm" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Calle Restauración #45, San Francisco de Macorís</span>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Horario</h4>
+          <p>Lunes - Viernes: 8:00 - 20:00</p>
+          <p>Sábados: 9:00 - 14:00</p>
+          <p>Domingos: Cerrado</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Consultorio Medisoft. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin Modal -->
+  <div id="admin-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Panel de Administración</h2>
+        <button class="modal-close" onclick="closeAdminModal()">
+          <svg class="icon-md" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Theme Selection -->
+        <div class="modal-section">
+          <h3>Tema de la Página</h3>
+          <div class="theme-options">
+            <div class="theme-option active" data-theme="light" onclick="changeTheme('light')">
+              <div class="theme-preview light"></div>
+              <p>Claro</p>
+            </div>
+            <div class="theme-option" data-theme="dark" onclick="changeTheme('dark')">
+              <div class="theme-preview dark"></div>
+              <p>Oscuro</p>
+            </div>
+            <div class="theme-option" data-theme="gray" onclick="changeTheme('gray')">
+              <div class="theme-preview gray"></div>
+              <p>Gris</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Login -->
+        <div class="modal-section">
+          <h3>Acceso de Administrador</h3>
+          <div class="admin-info">
+            <p><strong>Credenciales de prueba:</strong></p>
+            <p>Usuario: <strong>admin</strong></p>
+            <p>Contraseña: <strong>medisoft2024</strong></p>
+          </div>
+          
+          <form id="admin-login-form" class="login-form">
+            <div class="form-group">
+              <label for="admin-username">Usuario</label>
+              <input type="text" id="admin-username" name="username" placeholder="Ingrese su usuario" required>
+            </div>
+            <div class="form-group">
+              <label for="admin-password">Contraseña</label>
+              <input type="password" id="admin-password" name="password" placeholder="Ingrese su contraseña" required>
+            </div>
+            <button type="submit" class="btn-login">Iniciar Sesión</button>
+            <div id="login-message" class="login-message"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>

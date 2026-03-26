@@ -1,0 +1,193 @@
+/* Equipo Page Styles */
+
+.hidden {
+  display: none !important;
+}
+
+/* Team Header */
+.team-header {
+  background: linear-gradient(to right, #2563eb, #1e40af);
+  color: white;
+  padding: 4rem 0;
+}
+
+.team-header-content {
+  text-align: center;
+}
+
+.team-header-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .team-header-content h1 {
+    font-size: 3rem;
+  }
+}
+
+.team-header-content p {
+  font-size: 1.25rem;
+  color: #dbeafe;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+/* Team Section */
+.team-section {
+  padding: 4rem 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.doctor-card {
+  overflow: hidden;
+}
+
+.doctor-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .doctor-layout {
+    flex-direction: row;
+  }
+}
+
+.doctor-image {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .doctor-image {
+    width: 33.333%;
+  }
+}
+
+.doctor-image img {
+  width: 100%;
+  height: 256px;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .doctor-image img {
+    height: 100%;
+  }
+}
+
+.doctor-info {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.doctor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.doctor-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111827;
+  margin: 0;
+}
+
+.specialty {
+  color: #2563eb;
+  font-weight: 600;
+  margin: 0.25rem 0 0 0;
+}
+
+.award-icon {
+  width: 48px;
+  height: 48px;
+  background: #dbeafe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.doctor-description {
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.doctor-details {
+  margin-bottom: 1rem;
+}
+
+.detail-item {
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.doctor-contact {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-item a {
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-item a:hover {
+  color: #2563eb;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 4rem 0;
+  background: #eff6ff;
+}
+
+.cta-content {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.cta-content p {
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
